@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Практична_робота-18_04</title>
+  </head>
+  <body>
+    <div id="root">
+        <div id="output"></div>
+        <button onclick="changeState()">Змінити стан</button>
+      </div>
+      <script>
+        class App {
+          constructor() {
+            this.state = { name: 'Іван', age: 25 };
+          }
+          render() {
+            const { name, age } = this.state;
+            const output = document.querySelector('#output');
+            output.innerHTML = `
+              <div>
+                ім'я: ${name}, вік: ${age}
+              </div>
+            `;
+          }
+          setState(newState) {
+            this.state = { ...this.state, ...newState };
+            this.render();
+          }
+        }
+        const app = new App();
+        app.render();
+        function changeState() {
+          app.setState({ name: 'Коля', age: 30 });
+        }
+      </script>
+  </body>
+</html>

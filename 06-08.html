@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Практична_робота-18_06-08</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {name: 'Іван', age: 25, isDisplayed: false, clickCount: 0};
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick() {
+          this.setState(prevState => ({
+            isDisplayed: !prevState.isDisplayed,
+            clickCount: prevState.clickCount + 1
+          }));
+        }
+
+        render() {
+          const buttonText = this.state.clickCount % 2 === 0 ? 'Показати' : 'Сховати';
+
+          return (
+            <div>
+              <button onClick={this.handleClick}>{buttonText}</button>
+              {this.state.isDisplayed &&
+                <p>ім'я: {this.state.name}, вік: {this.state.age}</p>
+              }
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyComponent />, document.getElementById('root'));
+    </script>
+  </body>
+</html>

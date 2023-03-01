@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Практична_робота-18_09-10</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { names: ['Коля', 'Вася', 'Петро'] };
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.state.names.map((name, index) => <li key={name}>{name} - {index + 1}</li>)}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(<MyComponent />, document.getElementById('root'));
+
+    </script>
+  </body>
+</html>
